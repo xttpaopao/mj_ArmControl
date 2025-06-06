@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by
+Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+    name="T1Pro-A7">
+    <mujoco>
+        <compiler
+            balanceinertia="true"
+            discardvisual="false" />
+    </mujoco>
+    <link
+        name="base_link">
+        <inertial>
+            <origin
+                xyz="-0.000231426445855692 -0.000933479876471219 0.000282402277096182"
+                rpy="0 0 0" />
+            <mass
+                value="0.003993959429682" />
+            <inertia
+                ixx="8.3808189552202E-07"
+                ixy="-2.28447680582805E-09"
+                ixz="5.6555987125876E-09"
+                iyy="7.70850226587651E-07"
+                iyz="-1.39924462291845E-08"
+                izz="1.59919170783893E-06" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/base_link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link
+        name="Link1_Link">
+        <inertial>
+            <origin
+                xyz="0.000262546217895645 -0.00219973962893979 -0.00268736544004301"
+                rpy="0 0 0" />
+            <mass
+                value="0.310291849942591" />
+            <inertia
+                ixx="0.000276150910341302"
+                ixy="-1.74200529083304E-07"
+                ixz="2.19729568467682E-06"
+                iyy="0.000327519201612469"
+                iyz="2.5237580041196E-05"
+                izz="0.000207640676240523" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link1_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.568627450980392 0.596078431372549 0.623529411764706 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link1_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="Joint1"
+        type="continuous">
+        <origin
+            xyz="0 0 0.0518799974794781"
+            rpy="0 0 1.87000445463631" />
+        <parent
+            link="base_link" />
+        <child
+            link="Link1_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+    <link
+        name="Link2_Link">
+        <inertial>
+            <origin
+                xyz="0.0174525522462635 -0.00989064863452448 0.00023255581420826"
+                rpy="0 0 0" />
+            <mass
+                value="0.516204320488467" />
+            <inertia
+                ixx="0.000613973727605533"
+                ixy="0.000330556859016667"
+                ixz="-7.26928467600686E-06"
+                iyy="0.000586850311474031"
+                iyz="8.24140952979674E-06"
+                izz="0.000964239004331239" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link2_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.568627450980392 0.596078431372549 0.623529411764706 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link2_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="Joint2"
+        type="continuous">
+        <origin
+            xyz="0.000970143413927977 -0.0110000000000001 0.038"
+            rpy="3.14159265358979 -1.5707963267949 0" />
+        <parent
+            link="Link1_Link" />
+        <child
+            link="Link2_Link" />
+        <axis
+            xyz="0 0 -1" />
+    </joint>
+    <link
+        name="Link3_Link">
+        <inertial>
+            <origin
+                xyz="-0.0030388739040277 0.00225276599330963 -0.0184443140149775"
+                rpy="0 0 0" />
+            <mass
+                value="0.298867304425362" />
+            <inertia
+                ixx="0.000548390828815881"
+                ixy="3.31757187975395E-05"
+                ixz="-4.33361762135049E-05"
+                iyy="0.0005279185115398"
+                iyz="4.29149785544748E-05"
+                izz="0.000163323804548932" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link3_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.568627450980392 0.596078431372549 0.623529411764706 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link3_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="Joint3"
+        type="continuous">
+        <origin
+            xyz="0.11113684975823 -0.117105083516559 0.00137014390149936"
+            rpy="-1.5707963267949 -0.209745974477423 0.684858802975121" />
+        <parent
+            link="Link2_Link" />
+        <child
+            link="Link3_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+    <link
+        name="Link4_Link">
+        <inertial>
+            <origin
+                xyz="0.000173272617693579 -0.0186025220594133 -0.00120467075904948"
+                rpy="0 0 0" />
+            <mass
+                value="0.222372020853919" />
+            <inertia
+                ixx="0.000236105797182454"
+                ixy="3.50806194685354E-06"
+                ixz="-9.28457990326533E-07"
+                iyy="0.000106364033007163"
+                iyz="-1.17377565197316E-06"
+                izz="0.000235871883946952" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link4_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.890196078431373 0.890196078431373 0.913725490196078 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link4_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="Joint4"
+        type="continuous">
+        <origin
+            xyz="0.000727999752216539 -0.000953947776753075 -0.0825000000000002"
+            rpy="1.5707963267949 0 0.651860485919192" />
+        <parent
+            link="Link3_Link" />
+        <child
+            link="Link4_Link" />
+        <axis
+            xyz="0 0 -1" />
+    </joint>
+    <link
+        name="Link5_Link">
+        <inertial>
+            <origin
+                xyz="-1.06468925330228E-06 3.91306053731943E-06 -0.0469741947099905"
+                rpy="0 0 0" />
+            <mass
+                value="0.825511000406653" />
+            <inertia
+                ixx="0.00198229675992246"
+                ixy="-7.83043264230383E-08"
+                ixz="8.3805522794557E-08"
+                iyy="0.00198037872302043"
+                iyz="4.98604272475033E-05"
+                izz="0.000269161081347098" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link5_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link5_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="Joint5"
+        type="continuous">
+        <origin
+            xyz="0.00173587812170009 -0.0924837106043366 -0.00122644118670759"
+            rpy="-1.57079632679594 1.51302044867377 0.0187673516294453" />
+        <parent
+            link="Link4_Link" />
+        <child
+            link="Link5_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+    <link
+        name="Link6_Link">
+        <inertial>
+            <origin
+                xyz="2.54826353074389E-09 7.09402092846645E-07 2.62609417545079E-09"
+                rpy="0 0 0" />
+            <mass
+                value="0.00610543755423292" />
+            <inertia
+                ixx="1.97024136807472E-07"
+                ixy="1.10609665068305E-17"
+                ixz="3.95111091392079E-20"
+                iyy="2.21225714775247E-07"
+                iyz="1.10621278684105E-17"
+                izz="6.15833943976599E-08" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link6_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link6_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="Joint6"
+        type="continuous">
+        <origin
+            xyz="0 0 -0.150850000000036"
+            rpy="1.5707963267949 0.0181714827928233 3.14159265358979" />
+        <parent
+            link="Link5_Link" />
+        <child
+            link="Link6_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+    <link
+        name="Link7_Link">
+        <inertial>
+            <origin
+                xyz="-0.00120144408259926 -0.0126698161270308 -0.000748346244445919"
+                rpy="0 0 0" />
+            <mass
+                value="0.0333649127976068" />
+            <inertia
+                ixx="6.09846460720298E-06"
+                ixy="2.99707714867081E-07"
+                ixz="2.10542906028267E-08"
+                iyy="9.2305913913228E-06"
+                iyz="2.22022812084382E-07"
+                izz="6.03241199349697E-06" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link7_Link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.890196078431373 0.890196078431373 0.913725490196078 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="D:/code/mj_ArmControl/urdf/T1Pro-A7-DualArm/T1Pro-A7/meshes/Link7_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="Joint7"
+        type="continuous">
+        <origin
+            xyz="0 0 0"
+            rpy="0 1.5707963267949 0" />
+        <parent
+            link="Link6_Link" />
+        <child
+            link="Link7_Link" />
+        <axis
+            xyz="0 0 1" />
+    </joint>
+</robot>
