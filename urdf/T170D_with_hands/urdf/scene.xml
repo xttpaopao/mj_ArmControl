@@ -1,0 +1,53 @@
+<mujoco>
+  <asset>
+    <!-- 纹理和材质 -->
+    <texture name="grid" type="2d" builtin="checker" rgb1=".1 .2 .3" rgb2=".2 .3 .4" width="300" height="300"/>
+    <material name="grid" texture="grid" texrepeat="5 5" texuniform="true" reflectance="0.2"/>
+    <material name="table" rgba="0.8 0.7 0.6 1"/>
+    <material name="red" rgba="1 0 0 1"/>
+    <material name="blue" rgba="0 0 1 1"/>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+            height="512" />
+    <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2"
+            width="512" height="512" mark="cross" markrgb=".8 .8 .8" />
+    <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1"
+            texuniform="true" />
+  </asset>
+  
+  <worldbody>
+    <!-- 地面 -->
+    <geom name="floor" pos="0 0 0" size="15 15 1" type="plane" material="matplane"
+            margin="0.001" condim="3" friction="1 0.005 0.0001" />
+
+    <!-- 桌子 (1m x 0.6m x 0.75m) -->
+    <body name="table" pos="0.75 0 0">
+      <geom name="table_top" type="box" size="0.3 0.5 0.05" pos="0 0 0.75" material="table"/>
+      <!-- 四条桌腿 -->
+      <geom name="leg1" type="box" size="0.03 0.03 0.35" pos="0.25 0.45 0.35" material="table"/>
+      <geom name="leg2" type="box" size="0.03 0.03 0.35" pos="-0.25 0.45 0.35" material="table"/>
+      <geom name="leg3" type="box" size="0.03 0.03 0.35" pos="0.25 -0.45 0.35" material="table"/>
+      <geom name="leg4" type="box" size="0.03 0.03 0.35" pos="-0.25 -0.45 0.35" material="table"/>
+    </body>
+
+    <!-- 可交互物体 -->
+    <body name="red_block" pos="0.65 0.25 0.85">
+      <freejoint/>
+      <geom type="box" size="0.015 0.015 0.015" material="red" mass="0.1"/>
+    </body>
+
+    <body name="blue_block" pos="0.65 -0.25 0.85">
+      <freejoint/>
+      <geom type="box" size="0.015 0.015 0.015" material="blue" mass="0.1"/>
+    </body>
+
+    <!-- 灯光 -->
+    <light directional="true" diffuse="0.8 0.8 0.8" pos="0 0 3" dir="0 0 -1"/>
+    <light directional="true" diffuse="0.5 0.5 0.5" pos="2 2 2" dir="-1 -1 -1"/>
+
+    <!-- 观测相机 -->
+    <camera name="side_view" pos="1.5 1.5 1" xyaxes="-1 -1 0 0 0 1"/>
+  </worldbody>
+
+  <!-- 包含机器人模型 -->
+  <include file="T170D_locked.xml"/>
+</mujoco>

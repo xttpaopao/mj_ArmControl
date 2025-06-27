@@ -35,22 +35,19 @@
         <light directional="true" diffuse=".4 .4 .4" specular="0.1 0.1 0.1" pos="0 0 5.0"
             dir="0 0 -1" castshadow="false" />
         <light directional="true" diffuse=".6 .6 .6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1" />
-        <camera name="rgb_camera" pos="1 0 2" euler="0 0 0" fovy="60" />
-        <body name="cube" pos="0.75 0 0.05">
-            <freejoint />
-            <geom type="box" size="0.05 0.02 0.06" rgba="1 0 0 1" mass="0.01"
-                friction="3.0 2.0 0.003" />
-        </body>
+
         <geom name="floor" pos="0 0 0" size="15 15 1" type="plane" material="matplane"
             margin="0.001" condim="3" friction="1 0.005 0.0001" />
         <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1"
             mesh="BASE_S" />
         <geom type="mesh" rgba="1 1 1 1" mesh="BASE_S" />
+        <camera name="rgb_camera" pos="0 0 2" euler="0 0 0" fovy="60" />
         <body name="LEVEL_Y_S" pos="0 0 0.1279">
             <inertial pos="-0.072607 -0.0001 0.41852" quat="0 0.903587 0 0.428405" mass="2.04896"
                 diaginertia="0.00729896 0.00692801 0.00197492" />
             <joint name="LEVEL_Y" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.143"
-                actuatorfrcrange="-66 66" />
+                damping="0.1" armature='0.01'
+            />
             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                 rgba="0.776471 0.756863 0.737255 1" mesh="LEVEL_Y_S" />
             <geom type="mesh" rgba="0.776471 0.756863 0.737255 1" mesh="LEVEL_Y_S" />
@@ -58,8 +55,9 @@
                 <inertial pos="0.050437 1.2e-05 -0.053248"
                     quat="0.70698 -0.0139134 -0.0140774 0.706957" mass="1.24342"
                     diaginertia="0.0248777 0.024704 0.0011252" />
-                <joint name="WAIST_R" pos="0 0 0" axis="-1 0 0" range="-0.3491 0.4363"
-                    actuatorfrcrange="-102 102" />
+                <joint name="WAIST_R" pos="0 0 0" axis="-1 0 0" range="-0.3491 0.4363" damping="0.1"
+                    armature='0.01'
+                />
                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                     rgba="0.792157 0.819608 0.933333 1" mesh="WAIST_R_S" />
                 <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="WAIST_R_S" />
@@ -68,7 +66,8 @@
                         quat="0.725933 -0.0786278 0.0733347 0.679309" mass="1.23332"
                         diaginertia="0.00107742 0.00104452 0.000864602" />
                     <joint name="WAIST_Y" pos="0 0 0" axis="0 0 -1" range="-1.309 1.309"
-                        actuatorfrcrange="-102 102" />
+                        damping="0.1" armature='0.01'
+                    />
                     <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                         rgba="0.776471 0.756863 0.737255 1" mesh="WAIST_Y_S" />
                     <geom type="mesh" rgba="0.776471 0.756863 0.737255 1" mesh="WAIST_Y_S" />
@@ -77,7 +76,8 @@
                             quat="0.999303 0.0125559 0.0350207 -0.00309692" mass="4.10226"
                             diaginertia="0.0499969 0.0404734 0.0229972" />
                         <joint name="WAIST_P" pos="0 0 0" axis="0 -1 0" range="-0.17453 0.17453"
-                            actuatorfrcrange="-102 102" />
+                            damping="0.1" armature='0.01'
+                        />
                         <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                             rgba="1 1 1 1" mesh="WAIST_P_S" />
                         <geom type="mesh" rgba="1 1 1 1" mesh="WAIST_P_S" />
@@ -86,7 +86,8 @@
                                 quat="0.959377 0.282126 5.09518e-07 -1.73263e-06" mass="0.346435"
                                 diaginertia="0.000307454 0.000270441 0.000134958" />
                             <joint name="NECK_Y" pos="0 0 0" axis="0 0 1" range="-1.5708 1.5708"
-                                actuatorfrcrange="-11 11" />
+                                damping="0.1" armature='0.01'
+                            />
                             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                                 rgba="0.866667 0.866667 0.890196 1" mesh="NECK_Y_S" />
                             <geom type="mesh" rgba="0.866667 0.866667 0.890196 1" mesh="NECK_Y_S" />
@@ -94,8 +95,9 @@
                                 <inertial pos="1.4e-05 0.03233 0.045"
                                     quat="0.101682 0.699758 -0.101682 0.699758" mass="0.246086"
                                     diaginertia="0.000109592 9.05162e-05 6.63735e-05" />
-                                <joint name="NECK_P" pos="0 0 0" axis="0 -1 0"
-                                    range="-0.6981 0.5236" actuatorfrcrange="-4.8 4.8" />
+                                <joint name="NECK_P" pos="0 0 0" axis="0 -1 0" damping="0.1"
+                                    armature='0.01'
+                                    range="-0.6981 0.5236" />
                                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                                     rgba="0.647059 0.619608 0.588235 1" mesh="NECK_P_S" />
                                 <geom type="mesh" rgba="0.647059 0.619608 0.588235 1"
@@ -104,8 +106,9 @@
                                     <inertial pos="-0.020617 0.00012 0.081576"
                                         quat="0.707146 -0.022404 -0.0238661 0.70631" mass="0.584219"
                                         diaginertia="0.00443631 0.00434778 0.00229841" />
-                                    <joint name="NECK_R" pos="0 0 0" axis="1 0 0"
-                                        range="-0.2618 0.2618" actuatorfrcrange="-4.8 4.8" />
+                                    <joint name="NECK_R" pos="0 0 0" axis="1 0 0" damping="0.1"
+                                        armature='0.01'
+                                        range="-0.2618 0.2618" />
                                     <geom type="mesh" contype="0" conaffinity="0" group="1"
                                         density="0" rgba="1 1 1 1" mesh="NECK_R_S" />
                                     <geom type="mesh" rgba="1 1 1 1" mesh="NECK_R_S" />
@@ -116,8 +119,9 @@
                             <inertial pos="-0.003115 0.05959 1.3e-05"
                                 quat="0.461356 0.54573 -0.448896 0.53649" mass="0.799013"
                                 diaginertia="0.00063749 0.000622119 0.000541014" />
-                            <joint name="L_SHOULDER_P" pos="0 0 0" axis="0 1 0"
-                                range="-3.1416 3.1416" actuatorfrcrange="-66 66" />
+                            <joint name="L_SHOULDER_P" pos="0 0 0" axis="0 1 0" damping="0.1"
+                                armature='0.01'
+                                range="-3.1416 3.1416" />
                             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                                 rgba="0.890196 0.890196 0.913725 1" mesh="L_SHOULDER_P_S" />
                             <geom type="mesh" rgba="0.890196 0.890196 0.913725 1"
@@ -126,8 +130,9 @@
                                 <inertial pos="-0.030425 0.090877 0.000135"
                                     quat="0.475645 0.523308 -0.47627 0.522568" mass="0.674864"
                                     diaginertia="0.00124077 0.00111907 0.000560403" />
-                                <joint name="L_SHOULDER_R" pos="0 0 0" axis="1 0 0"
-                                    range="-1.396 0.5236" actuatorfrcrange="-66 66" />
+                                <joint name="L_SHOULDER_R" pos="0 0 0" axis="1 0 0" damping="0.1"
+                                    armature='0.01'
+                                    range="-1.396 0.5236" />
                                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                                     rgba="1 1 1 1" mesh="L_SHOULDER_R_S" />
                                 <geom type="mesh" rgba="1 1 1 1" mesh="L_SHOULDER_R_S" />
@@ -136,7 +141,8 @@
                                         quat="0.494313 0.508575 -0.490866 0.50602" mass="0.602086"
                                         diaginertia="0.00100059 0.000993603 0.000316243" />
                                     <joint name="L_SHOULDER_Y" pos="0 0 0" axis="0 -1 0"
-                                        range="-3.1416 3.1416" actuatorfrcrange="-34 34" />
+                                        damping="0.1" armature='0.01'
+                                        range="-3.1416 3.1416" />
                                     <geom type="mesh" contype="0" conaffinity="0" group="1"
                                         density="0" rgba="1 1 1 1" mesh="L_SHOULDER_Y_S" />
                                     <geom type="mesh" rgba="1 1 1 1" mesh="L_SHOULDER_Y_S" />
@@ -145,7 +151,8 @@
                                             quat="0.48067 0.542203 -0.41966 0.546678" mass="0.43436"
                                             diaginertia="0.000453275 0.000409235 0.000259274" />
                                         <joint name="L_ELBOW_Y" pos="0 0 0" axis="-1 0 0"
-                                            range="0 2.0071" actuatorfrcrange="-34 34" />
+                                            damping="0.1" armature='0.01'
+                                            range="0 2.0071" />
                                         <geom type="mesh" contype="0" conaffinity="0" group="1"
                                             density="0" rgba="1 1 1 1" mesh="L_ELBOW_Y_S" />
                                         <geom type="mesh" rgba="1 1 1 1" mesh="L_ELBOW_Y_S" />
@@ -154,9 +161,10 @@
                                                 quat="0.625337 0.780308 -0.0046751 0.00723572"
                                                 mass="0.532538"
                                                 diaginertia="0.00133466 0.00128259 0.000271828" />
-                                            <joint name="L_WRIST_P" pos="0 0 0"
+                                            <joint name="L_WRIST_P" pos="0 0 0" damping="0.1"
+                                                armature='0.01'
                                                 axis="0 0.999956 -0.00937055" range="-3.1416 3.1416"
-                                                actuatorfrcrange="-11 11" />
+                                            />
                                             <geom type="mesh" contype="0" conaffinity="0" group="1"
                                                 density="0" rgba="1 1 1 1" mesh="L_WRIST_P_S" />
                                             <geom type="mesh" rgba="1 1 1 1" mesh="L_WRIST_P_S" />
@@ -166,10 +174,11 @@
                                                     quat="0.568637 0.411309 0.423069 0.57314"
                                                     mass="0.246086"
                                                     diaginertia="0.000109592 9.05162e-05 6.63735e-05" />
-                                                <joint name="L_WRIST_Y" pos="0 0 0"
+                                                <joint name="L_WRIST_Y" pos="0 0 0" damping="0.1"
+                                                    armature='0.01'
                                                     axis="0.0201019 -0.00936865 -0.999754"
                                                     range="-1.3963 1.3963"
-                                                    actuatorfrcrange="-4.8 4.8" />
+                                                />
                                                 <geom type="mesh" contype="0" conaffinity="0"
                                                     group="1" density="0"
                                                     rgba="0.792157 0.819608 0.933333 1"
@@ -184,9 +193,10 @@
                                                         mass="0.52948"
                                                         diaginertia="0.00149874 0.00119905 0.000396604" />
                                                     <joint name="L_WRIST_R" pos="0 0 0"
+                                                        damping="0.1" armature='0.01'
                                                         axis="0.999686 0.0151435 0.0199587"
                                                         range="-1.5533 0.0873"
-                                                        actuatorfrcrange="-4.8 4.8" />
+                                                    />
                                                     <geom type="mesh" contype="0" conaffinity="0"
                                                         group="1" density="0"
                                                         rgba="0.890196 0.890196 0.913725 1"
@@ -205,8 +215,9 @@
                             <inertial pos="-0.003115 -0.059657 1e-05"
                                 quat="0.550635 0.453777 -0.540854 0.445381" mass="0.799013"
                                 diaginertia="0.000637865 0.000623149 0.000540362" />
-                            <joint name="R_SHOULDER_P" pos="0 0 0" axis="0 -1 0"
-                                range="-3.1416 3.1416" actuatorfrcrange="-66 66" />
+                            <joint name="R_SHOULDER_P" pos="0 0 0" axis="0 -1 0" damping="0.1"
+                                armature='0.01'
+                                range="-3.1416 3.1416" />
                             <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                                 rgba="0.890196 0.890196 0.913725 1" mesh="R_SHOULDER_P_S" />
                             <geom type="mesh" rgba="0.890196 0.890196 0.913725 1"
@@ -215,8 +226,9 @@
                                 <inertial pos="-0.030424 -0.09088 0.000136"
                                     quat="0.52334 0.475686 -0.522518 0.476248" mass="0.674839"
                                     diaginertia="0.00124051 0.00111888 0.000560347" />
-                                <joint name="R_SHOULDER_R" pos="0 0 0" axis="1 0 0"
-                                    range="-0.5236 1.396" actuatorfrcrange="-66 66" />
+                                <joint name="R_SHOULDER_R" pos="0 0 0" axis="1 0 0" damping="0.1"
+                                    armature='0.01'
+                                    range="-0.5236 1.396" />
                                 <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
                                     rgba="0.890196 0.890196 0.913725 1" mesh="R_SHOULDER_R_S" />
                                 <geom type="mesh" rgba="0.890196 0.890196 0.913725 1"
@@ -226,7 +238,8 @@
                                         quat="0.508189 0.493911 -0.506412 0.491266" mass="0.60208"
                                         diaginertia="0.00100054 0.000993555 0.000316234" />
                                     <joint name="R_SHOULDER_Y" pos="0 0 0" axis="0 1 0"
-                                        range="-3.1416 3.1416" actuatorfrcrange="-34 34" />
+                                        damping="0.1" armature='0.01'
+                                        range="-3.1416 3.1416" />
                                     <geom type="mesh" contype="0" conaffinity="0" group="1"
                                         density="0" rgba="1 1 1 1" mesh="R_SHOULDER_Y_S" />
                                     <geom type="mesh" rgba="1 1 1 1" mesh="R_SHOULDER_Y_S" />
@@ -236,7 +249,8 @@
                                             mass="0.434281"
                                             diaginertia="0.000453206 0.000409157 0.00025927" />
                                         <joint name="R_ELBOW_Y" pos="0 0 0" axis="1 0 0"
-                                            range="0 2.007" actuatorfrcrange="-34 34" />
+                                            damping="0.1" armature='0.01'
+                                            range="0 2.007" />
                                         <geom type="mesh" contype="0" conaffinity="0" group="1"
                                             density="0" rgba="0.890196 0.890196 0.913725 1"
                                             mesh="R_ELBOW_Y_S" />
@@ -248,7 +262,8 @@
                                                 mass="0.532564"
                                                 diaginertia="0.0013348 0.00128278 0.000271882" />
                                             <joint name="R_WRIST_P" pos="0 0 0" axis="0 -1 0"
-                                                range="-3.1416 3.1416" actuatorfrcrange="-11 11" />
+                                                damping="0.1" armature='0.01'
+                                                range="-3.1416 3.1416" />
                                             <geom type="mesh" contype="0" conaffinity="0" group="1"
                                                 density="0" rgba="1 1 1 1" mesh="R_WRIST_P_S" />
                                             <geom type="mesh" rgba="1 1 1 1" mesh="R_WRIST_P_S" />
@@ -258,8 +273,9 @@
                                                     mass="0.246086"
                                                     diaginertia="0.000109592 9.05162e-05 6.63735e-05" />
                                                 <joint name="R_WRIST_Y" pos="0 0 0" axis="0 0 -1"
+                                                    damping="0.1" armature='0.01'
                                                     range="-1.3963 1.3963"
-                                                    actuatorfrcrange="-4.8 4.8" />
+                                                />
                                                 <geom type="mesh" contype="0" conaffinity="0"
                                                     group="1" density="0"
                                                     rgba="0.792157 0.819608 0.933333 1"
@@ -273,8 +289,9 @@
                                                         mass="0.535023"
                                                         diaginertia="0.00167656 0.0013561 0.000438356" />
                                                     <joint name="R_WRIST_R" pos="0 0 0" axis="1 0 0"
+                                                        damping="0.1" armature='0.01'
                                                         range="-0.0873 1.5533"
-                                                        actuatorfrcrange="-4.8 4.8" />
+                                                    />
                                                     <geom type="mesh" contype="0" conaffinity="0"
                                                         group="1" density="0"
                                                         rgba="0.890196 0.890196 0.913725 1"
@@ -294,83 +311,58 @@
             </body>
         </body>
     </worldbody>
+
     <actuator>
         <!-- 通用 PD 控制器（位置控制） -->
-        <general name="LEVEL_Y_ctrl" joint="LEVEL_Y" ctrllimited="true" ctrlrange="0 0.143"
-            gainprm="500" biasprm="0 -500 -50" forcerange="-66 66" />
+        <position name="LEVEL_Y_ctrl" joint="LEVEL_Y" ctrlrange="0 0.143" kp="1000" kv="100"
+        />
+        <position name="WAIST_R_ctrl" joint="WAIST_R" ctrlrange="-0.3491 0.4363" kp="1000" kv="100"
+        />
+        <position name="WAIST_Y_ctrl" joint="WAIST_Y" ctrlrange="-1.309 1.309" kp="1000" kv="100"
+        />
+        <position name="WAIST_P_ctrl" joint="WAIST_P" ctrlrange="-0.17453 0.17453" kp="1000"
+            kv="100"
+        />
 
-        <general name="WAIST_R_ctrl" joint="WAIST_R" ctrllimited="true" ctrlrange="-0.3491 0.4363"
-            gainprm="800" biasprm="0 -800 -80" forcerange="-102 102" />
-
-        <general name="WAIST_Y_ctrl" joint="WAIST_Y" ctrllimited="true" ctrlrange="-1.309 1.309"
-            gainprm="800" biasprm="0 -800 -80" forcerange="-102 102" />
-
-        <general name="WAIST_P_ctrl" joint="WAIST_P" ctrllimited="true" ctrlrange="-0.17453 0.17453"
-            gainprm="800" biasprm="0 -800 -80" forcerange="-102 102" />
-
-        <general name="NECK_Y_ctrl" joint="NECK_Y" ctrllimited="true" ctrlrange="-1.5708 1.5708"
-            gainprm="300" biasprm="0 -300 -30" forcerange="-11 11" />
-
-        <general name="NECK_P_ctrl" joint="NECK_P" ctrllimited="true" ctrlrange="-0.6981 0.5236"
-            gainprm="300" biasprm="0 -300 -30" forcerange="-4.8 4.8" />
-
-        <general name="NECK_R_ctrl" joint="NECK_R" ctrllimited="true" ctrlrange="-0.2618 0.2618"
-            gainprm="300" biasprm="0 -300 -30" forcerange="-4.8 4.8" />
+        <!-- 颈部关节 -->
+        <position name="NECK_Y_ctrl" joint="NECK_Y" ctrlrange="-1.5708 1.5708" kp="200" kv="10"
+        />
+        <position name="NECK_P_ctrl" joint="NECK_P" ctrlrange="-0.6981 0.5236" kp="200" kv="10"
+        />
+        <position name="NECK_R_ctrl" joint="NECK_R" ctrlrange="-0.2618 0.2618" kp="200" kv="10"
+        />
 
         <!-- 左臂关节 -->
-        <general name="L_SHOULDER_P_ctrl" joint="L_SHOULDER_P" ctrllimited="true"
-            ctrlrange="-3.1416 3.1416"
-            gainprm="600" biasprm="0 -600 -60" forcerange="-66 66" />
-
-        <general name="L_SHOULDER_R_ctrl" joint="L_SHOULDER_R" ctrllimited="true"
-            ctrlrange="-1.396 0.5236"
-            gainprm="600" biasprm="0 -600 -60" forcerange="-66 66" />
-
-        <general name="L_SHOULDER_Y_ctrl" joint="L_SHOULDER_Y" ctrllimited="true"
-            ctrlrange="-3.1416 3.1416"
-            gainprm="400" biasprm="0 -400 -40" forcerange="-34 34" />
-
-        <general name="L_ELBOW_Y_ctrl" joint="L_ELBOW_Y" ctrllimited="true" ctrlrange="0 2.0071"
-            gainprm="400" biasprm="0 -400 -40" forcerange="-34 34" />
-
-        <general name="L_WRIST_P_ctrl" joint="L_WRIST_P" ctrllimited="true"
-            ctrlrange="-3.1416 3.1416"
-            gainprm="200" biasprm="0 -200 -20" forcerange="-11 11" />
-
-        <general name="L_WRIST_Y_ctrl" joint="L_WRIST_Y" ctrllimited="true"
-            ctrlrange="-1.3963 1.3963"
-            gainprm="200" biasprm="0 -200 -20" forcerange="-4.8 4.8" />
-
-        <general name="L_WRIST_R_ctrl" joint="L_WRIST_R" ctrllimited="true"
-            ctrlrange="-1.5533 0.0873"
-            gainprm="200" biasprm="0 -200 -20" forcerange="-4.8 4.8" />
+        <position name="L_SHOULDER_P_ctrl" joint="L_SHOULDER_P" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="L_SHOULDER_R_ctrl" joint="L_SHOULDER_R" ctrlrange="-1.396 0.5236" kp="200"
+            kv="10" />
+        <position name="L_SHOULDER_Y_ctrl" joint="L_SHOULDER_Y" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="L_ELBOW_Y_ctrl" joint="L_ELBOW_Y" ctrlrange="0 2.0071" kp="200" kv="10"
+        />
+        <position name="L_WRIST_P_ctrl" joint="L_WRIST_P" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="L_WRIST_Y_ctrl" joint="L_WRIST_Y" ctrlrange="-1.3963 1.3963" kp="200"
+            kv="10" />
+        <position name="L_WRIST_R_ctrl" joint="L_WRIST_R" ctrlrange="-1.5533 0.0873" kp="200"
+            kv="10" />
 
         <!-- 右臂关节 -->
-        <general name="R_SHOULDER_P_ctrl" joint="R_SHOULDER_P" ctrllimited="true"
-            ctrlrange="-3.1416 3.1416"
-            gainprm="600" biasprm="0 -600 -60" forcerange="-66 66" />
-
-        <general name="R_SHOULDER_R_ctrl" joint="R_SHOULDER_R" ctrllimited="true"
-            ctrlrange="-0.5236 1.396"
-            gainprm="600" biasprm="0 -600 -60" forcerange="-66 66" />
-
-        <general name="R_SHOULDER_Y_ctrl" joint="R_SHOULDER_Y" ctrllimited="true"
-            ctrlrange="-3.1416 3.1416"
-            gainprm="400" biasprm="0 -400 -40" forcerange="-34 34" />
-
-        <general name="R_ELBOW_Y_ctrl" joint="R_ELBOW_Y" ctrllimited="true" ctrlrange="0 2.007"
-            gainprm="400" biasprm="0 -400 -40" forcerange="-34 34" />
-
-        <general name="R_WRIST_P_ctrl" joint="R_WRIST_P" ctrllimited="true"
-            ctrlrange="-3.1416 3.1416"
-            gainprm="200" biasprm="0 -200 -20" forcerange="-11 11" />
-
-        <general name="R_WRIST_Y_ctrl" joint="R_WRIST_Y" ctrllimited="true"
-            ctrlrange="-1.3963 1.3963"
-            gainprm="200" biasprm="0 -200 -20" forcerange="-4.8 4.8" />
-
-        <general name="R_WRIST_R_ctrl" joint="R_WRIST_R" ctrllimited="true"
-            ctrlrange="-0.0873 1.5533"
-            gainprm="200" biasprm="0 -200 -20" forcerange="-4.8 4.8" />
+        <position name="R_SHOULDER_P_ctrl" joint="R_SHOULDER_P" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="R_SHOULDER_R_ctrl" joint="R_SHOULDER_R" ctrlrange="-0.5236 1.396" kp="200"
+            kv="10" />
+        <position name="R_SHOULDER_Y_ctrl" joint="R_SHOULDER_Y" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="R_ELBOW_Y_ctrl" joint="R_ELBOW_Y" ctrlrange="0 2.007" kp="200" kv="10"
+        />
+        <position name="R_WRIST_P_ctrl" joint="R_WRIST_P" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="R_WRIST_Y_ctrl" joint="R_WRIST_Y" ctrlrange="-1.3963 1.3963" kp="200"
+            kv="10" />
+        <position name="R_WRIST_R_ctrl" joint="R_WRIST_R" ctrlrange="-0.0873 1.5533" kp="200"
+            kv="10" />
     </actuator>
+
 </mujoco>

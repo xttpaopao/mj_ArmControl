@@ -1,0 +1,30 @@
+Fri Jun  6 18:24:49 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 10. The simulation is unstable. Time = 0.0120.
+
+Fri Jun  6 18:41:16 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 15. The simulation is unstable. Time = 0.0060.
+
+Fri Jun  6 18:43:28 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 9. The simulation is unstable. Time = 0.1540.
+
+Tue Jun 10 16:01:21 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 3. The simulation is unstable. Time = 0.0080.
+
+Tue Jun 10 16:02:49 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 3. The simulation is unstable. Time = 0.0080.
+
+Tue Jun 10 16:03:05 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 3. The simulation is unstable. Time = 0.0080.
+
+Tue Jun 10 16:03:17 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 2. The simulation is unstable. Time = 0.0050.
+
+Tue Jun 10 16:44:02 2025
+WARNING: Nan, Inf or huge value in QACC at DOF 20. The simulation is unstable. Time = 0.0120.
+
+Tue Jun 10 18:34:28 2025
+ERROR: mjv_updateCamera: track body id is outside valid range
+
+Tue Jun 10 18:34:54 2025
+ERROR: mjv_updateCamera: track body id is outside valid range
+

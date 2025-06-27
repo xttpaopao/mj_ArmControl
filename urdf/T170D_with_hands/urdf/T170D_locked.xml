@@ -1,0 +1,645 @@
+<mujoco model="T170D">
+    <visual>
+        <global offwidth="640" offheight="480" />
+    </visual>
+
+    <compiler angle="radian" meshdir="../meshes/" />
+    <asset>
+        <mesh name="BASE_S" file="BASE_S.STL" />
+        <mesh name="LEVEL_Y_S" file="LEVEL_Y_S.STL" />
+        <mesh name="WAIST_R_S" file="WAIST_R_S.STL" />
+        <mesh name="WAIST_Y_S" file="WAIST_Y_S.STL" />
+        <mesh name="WAIST_P_S" file="WAIST_P_S.STL" />
+        <mesh name="NECK_Y_S" file="NECK_Y_S.STL" />
+        <mesh name="NECK_P_S" file="NECK_P_S.STL" />
+        <mesh name="NECK_R_S" file="NECK_R_S.STL" />
+        <mesh name="L_SHOULDER_P_S" file="L_SHOULDER_P_S.STL" />
+        <mesh name="L_SHOULDER_R_S" file="L_SHOULDER_R_S.STL" />
+        <mesh name="L_SHOULDER_Y_S" file="L_SHOULDER_Y_S.STL" />
+        <mesh name="L_ELBOW_Y_S" file="L_ELBOW_Y_S.STL" />
+        <mesh name="L_WRIST_P_S" file="L_WRIST_P_S.STL" />
+        <mesh name="L_WRIST_Y_S" file="L_WRIST_Y_S.STL" />
+        <mesh name="L_WRIST_R_S" file="L_WRIST_R_S.STL" />
+        <mesh name="R_SHOULDER_P_S" file="R_SHOULDER_P_S.STL" />
+        <mesh name="R_SHOULDER_R_S" file="R_SHOULDER_R_S.STL" />
+        <mesh name="R_SHOULDER_Y_S" file="R_SHOULDER_Y_S.STL" />
+        <mesh name="R_ELBOW_Y_S" file="R_ELBOW_Y_S.STL" />
+        <mesh name="R_WRIST_P_S" file="R_WRIST_P_S.STL" />
+        <mesh name="R_WRIST_Y_S" file="R_WRIST_Y_S.STL" />
+        <mesh name="R_WRIST_R_S" file="R_WRIST_R_S.STL" />
+        <!-- <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+            height="512" />
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2"
+            width="512" height="512" mark="cross" markrgb=".8 .8 .8" />
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1"
+            texuniform="true" /> -->
+        <!-- ALOHA 夹爪 -->
+        <mesh name="vx300s_7_gripper_prop" file="vx300s_7_gripper_prop.stl" />
+        <mesh name="vx300s_7_gripper_bar" file="vx300s_7_gripper_bar.stl" />
+        <mesh name="vx300s_7_gripper_wrist_mount" file="vx300s_7_gripper_wrist_mount.stl" />
+        <mesh name="vx300s_8_custom_finger_left" file="vx300s_8_custom_finger_left.stl" />
+        <mesh name="vx300s_8_custom_finger_right" file="vx300s_8_custom_finger_right.stl" />
+        <mesh name="d405_solid" file="d405_solid.stl" />
+        <material name="black" rgba="0.15 0.15 0.15 1" />
+    </asset>
+    <default>
+        <default class="finger">
+            <joint type="slide" armature="0.243" damping="40" />
+            <position ctrlrange="0.00 0.037" kp="2000" kv="124" />
+            <default class="left_finger">
+                <joint range="0.00 0.041" axis="0 0 -1" />
+            </default>
+            <default class="right_finger">
+                <joint range="0.00 0.041" axis="0 0 -1" />
+            </default>
+        </default>
+        <default class="visual">
+            <geom type="mesh" mass="0" group="2" material="black" contype="0" conaffinity="0" />
+        </default>
+        <default class="collision">
+            <geom group="3" type="mesh" condim="6" friction="1 5e-3 5e-4" solref=".01 1" />
+            <default class="sphere_collision">
+                <geom type="sphere" size="0.0006" rgba="1 0 0 1" />
+            </default>
+        </default>
+    </default>
+    <worldbody>
+        <light directional="true" diffuse=".4 .4 .4" specular="0.1 0.1 0.1" pos="0 0 5.0"
+            dir="0 0 -1" castshadow="false" />
+        <light directional="true" diffuse=".6 .6 .6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1" />
+
+        <!-- <geom name="floor" pos="0 0 -0.3" size="15 15 1" type="plane" material="matplane"
+            margin="0.001" condim="3" friction="1 0.005 0.0001" /> -->
+        <geom type="mesh" pos="0 0 0.3" contype="0" conaffinity="0" group="1" density="0"
+            rgba="1 1 1 1"
+            mesh="BASE_S" />
+        <!-- <geom type="mesh" rgba="1 1 1 1" mesh="BASE_S" /> -->
+        <camera name="rgb_camera" pos="1 0 2" euler="0 0 0" fovy="60" />
+        <body name="LEVEL_Y_S" pos="0 0 0.4279">
+            <inertial pos="-0.072607 -0.0001 0.41852" quat="0 0.903587 0 0.428405" mass="2.04896"
+                diaginertia="0.00729896 0.00692801 0.00197492" />
+            <!-- <joint name="LEVEL_Y" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.143"
+                damping="0.1" armature='0.01'
+            /> -->
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                rgba="0.776471 0.756863 0.737255 1" mesh="LEVEL_Y_S" />
+            <geom type="mesh" rgba="0.776471 0.756863 0.737255 1" mesh="LEVEL_Y_S" />
+            <body name="WAIST_R_S" pos="-0.0652 -0.0001 0.441589">
+                <inertial pos="0.050437 1.2e-05 -0.053248"
+                    quat="0.70698 -0.0139134 -0.0140774 0.706957" mass="1.24342"
+                    diaginertia="0.0248777 0.024704 0.0011252" />
+                <!-- <joint name="WAIST_R" pos="0 0 0" axis="-1 0 0" range="-0.3491 0.4363"
+                damping="0.1"
+                    armature='0.01'
+                /> -->
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                    rgba="0.792157 0.819608 0.933333 1" mesh="WAIST_R_S" />
+                <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="WAIST_R_S" />
+                <body name="WAIST_Y_S" pos="0.053 0 0.0318">
+                    <inertial pos="3.7e-05 0.006415 0.050441"
+                        quat="0.725933 -0.0786278 0.0733347 0.679309" mass="1.23332"
+                        diaginertia="0.00107742 0.00104452 0.000864602" />
+                    <!-- <joint name="WAIST_Y" pos="0 0 0" axis="0 0 -1" range="-1.309 1.309"
+                        damping="0.1" armature='0.01'
+                    /> -->
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                        rgba="0.776471 0.756863 0.737255 1" mesh="WAIST_Y_S" />
+                    <geom type="mesh" rgba="0.776471 0.756863 0.737255 1" mesh="WAIST_Y_S" />
+                    <body name="WAIST_P_S" pos="0 0.0474 0.0552">
+                        <inertial pos="-0.007893 -0.046793 0.195627"
+                            quat="0.999303 0.0125559 0.0350207 -0.00309692" mass="4.10226"
+                            diaginertia="0.0499969 0.0404734 0.0229972" />
+                        <!-- <joint name="WAIST_P" pos="0 0 0" axis="0 -1 0" range="-0.17453
+                        0.17453"
+                            damping="0.1" armature='0.01'
+                        /> -->
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                            rgba="1 1 1 1" mesh="WAIST_P_S" />
+                        <geom type="mesh" rgba="1 1 1 1" mesh="WAIST_P_S" />
+                        <body name="NECK_Y_S" pos="0 -0.0474 0.2958">
+                            <inertial pos="0 -0.016557 0.039095"
+                                quat="0.959377 0.282126 5.09518e-07 -1.73263e-06" mass="0.346435"
+                                diaginertia="0.000307454 0.000270441 0.000134958" />
+                            <!-- <joint name="NECK_Y" pos="0 0 0" axis="0 0 1" range="-1.5708
+                            1.5708"
+                                damping="0.1" armature='0.01'
+                            /> -->
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                                rgba="0.866667 0.866667 0.890196 1" mesh="NECK_Y_S" />
+                            <geom type="mesh" rgba="0.866667 0.866667 0.890196 1" mesh="NECK_Y_S" />
+                            <body name="NECK_P_S" pos="0 -0.037 0.0372">
+                                <inertial pos="1.4e-05 0.03233 0.045"
+                                    quat="0.101682 0.699758 -0.101682 0.699758" mass="0.246086"
+                                    diaginertia="0.000109592 9.05162e-05 6.63735e-05" />
+                                <!-- <joint name="NECK_P" pos="0 0 0" axis="0 -1 0" damping="0.1"
+                                    armature='0.01'
+                                    range="-0.6981 0.5236" /> -->
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                                    rgba="0.647059 0.619608 0.588235 1" mesh="NECK_P_S" />
+                                <geom type="mesh" rgba="0.647059 0.619608 0.588235 1"
+                                    mesh="NECK_P_S" />
+                                <body name="NECK_R_S" pos="0.026 0.037 0.045">
+                                    <inertial pos="-0.020617 0.00012 0.081576"
+                                        quat="0.707146 -0.022404 -0.0238661 0.70631" mass="0.584219"
+                                        diaginertia="0.00443631 0.00434778 0.00229841" />
+                                    <!-- <joint name="NECK_R" pos="0 0 0" axis="1 0 0" damping="0.1"
+                                        armature='0.01'
+                                        range="-0.2618 0.2618" /> -->
+                                    <geom type="mesh" contype="0" conaffinity="0" group="1"
+                                        density="0" rgba="1 1 1 1" mesh="NECK_R_S" />
+                                    <geom type="mesh" rgba="1 1 1 1" mesh="NECK_R_S" />
+                                </body>
+                            </body>
+                        </body>
+                        <body name="L_SHOULDER_P_S" pos="0 0.06045 0.262">
+                            <inertial pos="-0.003115 0.05959 1.3e-05"
+                                quat="0.461356 0.54573 -0.448896 0.53649" mass="0.799013"
+                                diaginertia="0.00063749 0.000622119 0.000541014" />
+                            <joint name="L_SHOULDER_P" pos="0 0 0" axis="0 1 0" damping="0.1"
+                                armature='0.01'
+                                range="-3.1416 3.1416"/>
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                                rgba="0.890196 0.890196 0.913725 1" mesh="L_SHOULDER_P_S" />
+                            <geom type="mesh" rgba="0.890196 0.890196 0.913725 1"
+                                mesh="L_SHOULDER_P_S" />
+                            <body name="L_SHOULDER_R_S" pos="0.03135 0.06315 0">
+                                <inertial pos="-0.030425 0.090877 0.000135"
+                                    quat="0.475645 0.523308 -0.47627 0.522568" mass="0.674864"
+                                    diaginertia="0.00124077 0.00111907 0.000560403" />
+                                <joint name="L_SHOULDER_R" pos="0 0 0" axis="1 0 0" damping="0.1"
+                                    armature='0.01'
+                                    range="-1.396 0.5236" />
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                                    rgba="1 1 1 1" mesh="L_SHOULDER_R_S" />
+                                <geom type="mesh" rgba="1 1 1 1" mesh="L_SHOULDER_R_S" />
+                                <body name="L_SHOULDER_Y_S" pos="-0.03135 0.1423 0">
+                                    <inertial pos="-0.000963 0.098022 7.2e-05"
+                                        quat="0.494313 0.508575 -0.490866 0.50602" mass="0.602086"
+                                        diaginertia="0.00100059 0.000993603 0.000316243" />
+                                    <joint name="L_SHOULDER_Y" pos="0 0 0" axis="0 -1 0"
+                                        damping="0.1" armature='0.01'
+                                        range="-3.1416 3.1416" />
+                                    <geom type="mesh" contype="0" conaffinity="0" group="1"
+                                        density="0" rgba="1 1 1 1" mesh="L_SHOULDER_Y_S" />
+                                    <geom type="mesh" rgba="1 1 1 1" mesh="L_SHOULDER_Y_S" />
+                                    <body name="L_ELBOW_Y_S" pos="0.0294 0.1177 0">
+                                        <inertial pos="-0.028116 0.063323 -1.6e-05"
+                                            quat="0.48067 0.542203 -0.41966 0.546678" mass="0.43436"
+                                            diaginertia="0.000453275 0.000409235 0.000259274" />
+                                        <joint name="L_ELBOW_Y" pos="0 0 0" axis="-1 0 0"
+                                            damping="0.1" armature='0.01'
+                                            range="0 2.0071" />
+                                        <geom type="mesh" contype="0" conaffinity="0" group="1"
+                                            density="0" rgba="1 1 1 1" mesh="L_ELBOW_Y_S" />
+                                        <geom type="mesh" rgba="1 1 1 1" mesh="L_ELBOW_Y_S" />
+                                        <body name="L_WRIST_P_S" pos="-0.0294 0.103295 -0.000967978">
+                                            <inertial pos="-0.000413 0.060067 0.020169"
+                                                quat="0.625337 0.780308 -0.0046751 0.00723572"
+                                                mass="0.532538"
+                                                diaginertia="0.00133466 0.00128259 0.000271828" />
+                                            <joint name="L_WRIST_P" pos="0 0 0" damping="0.1"
+                                                armature='0.01'
+                                                axis="0 0.999956 -0.00937055" range="-3.1416 3.1416"
+                                            />
+                                            <geom type="mesh" contype="0" conaffinity="0" group="1"
+                                                density="0" rgba="1 1 1 1" mesh="L_WRIST_P_S" />
+                                            <geom type="mesh" rgba="1 1 1 1" mesh="L_WRIST_P_S" />
+                                            <body name="L_WRIST_Y_S"
+                                                pos="-0.000557829 0.145954 0.0263779">
+                                                <inertial pos="0.000478 -0.000216 -0.023074"
+                                                    quat="0.568637 0.411309 0.423069 0.57314"
+                                                    mass="0.246086"
+                                                    diaginertia="0.000109592 9.05162e-05 6.63735e-05" />
+                                                <joint name="L_WRIST_Y" pos="0 0 0" damping="0.1"
+                                                    armature='0.01'
+                                                    axis="0.0201019 -0.00936865 -0.999754"
+                                                    range="-1.3963 1.3963"
+                                                />
+                                                <geom type="mesh" contype="0" conaffinity="0"
+                                                    group="1" density="0"
+                                                    rgba="0.792157 0.819608 0.933333 1"
+                                                    mesh="L_WRIST_Y_S" />
+                                                <geom type="mesh"
+                                                    rgba="0.792157 0.819608 0.933333 1"
+                                                    mesh="L_WRIST_Y_S" />
+                                                <body name="L_WRIST_R_S"
+                                                    pos="0.0265497 0.00013375 -0.0272242">
+                                                    <inertial pos="-0.017402 0.13607 -0.000547"
+                                                        quat="0.553606 0.58479 -0.408039 0.430169"
+                                                        mass="0.52948"
+                                                        diaginertia="0.00149874 0.00119905 0.000396604" />
+                                                    <joint name="L_WRIST_R" pos="0 0 0"
+                                                        damping="0.1" armature='0.01'
+                                                        axis="0.999686 0.0151435 0.0199587"
+                                                        range="-1.5533 0.0873"
+                                                    />
+                                                    <geom type="mesh" contype="0" conaffinity="0"
+                                                        group="1" density="0"
+                                                        rgba="0.890196 0.890196 0.913725 1"
+                                                        mesh="L_WRIST_R_S" />
+                                                    <geom type="mesh"
+                                                        rgba="0.890196 0.890196 0.913725 1"
+                                                        mesh="L_WRIST_R_S" />
+
+                                                    <!-- ALOHA -->
+                                                    <!-- 添加夹爪基座 -->
+                                                    <body name="L_gripper_link" pos="-0.03 0.1 0"
+                                                        euler="-1.5708 0 0">
+                                                        <inertial
+                                                            pos="0.0395662 -2.56311e-07 0.00400649"
+                                                            quat="0.62033 0.619916 -0.339682 0.339869"
+                                                            mass="0.251652"
+                                                            diaginertia="0.000689546 0.000650316 0.000468142" />
+                                                        <geom class="visual"
+                                                            mesh="vx300s_7_gripper_prop" />
+                                                        <geom class="collision"
+                                                            mesh="vx300s_7_gripper_prop" />
+                                                        <geom class="visual"
+                                                            mesh="vx300s_7_gripper_bar" />
+                                                        <geom class="collision"
+                                                            mesh="vx300s_7_gripper_bar" />
+                                                        <geom class="visual"
+                                                            pos="0 -0.03525 -0.0227"
+                                                            quat="0 -1 0 -1" type="mesh"
+                                                            mesh="vx300s_7_gripper_wrist_mount" />
+                                                        <geom class="collision"
+                                                            pos="0 -0.03525 -0.0227"
+                                                            quat="0 -1 0 -1" type="mesh"
+                                                            mesh="vx300s_7_gripper_wrist_mount" />
+
+                                                        <!-- 添加相机 -->
+                                                        <geom class="visual"
+                                                            pos="0 -0.0824748 -0.0095955"
+                                                            quat="0 0 -0.21644 -0.976296"
+                                                            type="mesh" mesh="d405_solid" />
+                                                        <geom class="collision"
+                                                            pos="0 -0.0824748 -0.0095955"
+                                                            quat="0 0 -0.21644 -0.976296"
+                                                            type="mesh" mesh="d405_solid" />
+                                                        <camera name="wrist_cam_left"
+                                                            pos="0 -0.0824748 -0.0095955"
+                                                            mode="fixed" euler="2.70525955359 0 0"
+                                                            focal="1.93e-3 1.93e-3"
+                                                            resolution="1280 720"
+                                                            sensorsize="3896e-6 2140e-6" />
+                                                        <body name="L_tool_frame"
+                                                            pos="0 0 0" euler="1.5708 0 0" />
+                                                        <!-- 添加左手指 -->
+                                                        <body name="L_left_finger_link"
+                                                            pos="0.0290 -0.0141637 0.0211727"
+                                                            quat="1 -1 -1 1">
+                                                            <inertial
+                                                                pos="0.0143478 -0.0284791 0.0122897"
+                                                                quat="0.535486 0.458766 -0.450407 0.547651"
+                                                                mass="0.0862937"
+                                                                diaginertia="5.86848e-05 4.46887e-05 1.8397e-05" />
+                                                            <joint name="L_left_finger"
+                                                                class="left_finger" />
+                                                            <geom pos="0.0141637 0.0211727 0.06"
+                                                                class="visual" quat="1 1 1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_left" />
+                                                            <geom pos="0.0141637 0.0211727 0.06"
+                                                                class="collision" quat="1 1 1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_left" />
+                                                            <geom name="L_left_g0"
+                                                                pos="0.013  -0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="L_left_g1"
+                                                                pos="0.0222 -0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="L_left_g2"
+                                                                pos="0.0182 -0.0845 0.0266"
+                                                                class="sphere_collision" />
+                                                        </body>
+
+                                                        <!-- 添加右手指 -->
+                                                        <body name="L_right_finger_link"
+                                                            pos="-0.0290 -0.0141637 0.0211727"
+                                                            quat="1 1 1 1">
+                                                            <inertial
+                                                                pos="0.0143711 0.0284792 0.0121421"
+                                                                quat="0.461317 0.537615 -0.545478 0.447894"
+                                                                mass="0.0862932"
+                                                                diaginertia="5.86828e-05 4.46887e-05 1.83949e-05" />
+                                                            <joint name="L_right_finger"
+                                                                class="right_finger" />
+                                                            <geom
+                                                                pos="0.0141637 -0.0211727 0.0597067"
+                                                                class="visual" quat="1 -1 -1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_right" />
+                                                            <geom
+                                                                pos="0.0141637 -0.0211727 0.0597067"
+                                                                class="collision" quat="1 -1 -1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_right" />
+                                                            <geom name="L_right_g0"
+                                                                pos="0.013  0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="L_right_g1"
+                                                                pos="0.0222 0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="L_right_g2"
+                                                                pos="0.0182 0.0845 0.0266"
+                                                                class="sphere_collision" />
+
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                        <body name="R_SHOULDER_P_S" pos="0 -0.15525 0.262">
+                            <inertial pos="-0.003115 -0.059657 1e-05"
+                                quat="0.550635 0.453777 -0.540854 0.445381" mass="0.799013"
+                                diaginertia="0.000637865 0.000623149 0.000540362" />
+                            <joint name="R_SHOULDER_P" pos="0 0 0" axis="0 -1 0" damping="0.1"
+                                armature='0.01'
+                                range="-3.1416 3.1416" />
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                                rgba="0.890196 0.890196 0.913725 1" mesh="R_SHOULDER_P_S" />
+                            <geom type="mesh" rgba="0.890196 0.890196 0.913725 1"
+                                mesh="R_SHOULDER_P_S" />
+                            <body name="R_SHOULDER_R_S" pos="0.03135 -0.06315 0">
+                                <inertial pos="-0.030424 -0.09088 0.000136"
+                                    quat="0.52334 0.475686 -0.522518 0.476248" mass="0.674839"
+                                    diaginertia="0.00124051 0.00111888 0.000560347" />
+                                <joint name="R_SHOULDER_R" pos="0 0 0" axis="1 0 0" damping="0.1"
+                                    armature='0.01'
+                                    range="-0.5236 1.396" />
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0"
+                                    rgba="0.890196 0.890196 0.913725 1" mesh="R_SHOULDER_R_S" />
+                                <geom type="mesh" rgba="0.890196 0.890196 0.913725 1"
+                                    mesh="R_SHOULDER_R_S" />
+                                <body name="R_SHOULDER_Y_S" pos="-0.03135 -0.1423 0">
+                                    <inertial pos="-0.000963 -0.098022 7.2e-05"
+                                        quat="0.508189 0.493911 -0.506412 0.491266" mass="0.60208"
+                                        diaginertia="0.00100054 0.000993555 0.000316234" />
+                                    <joint name="R_SHOULDER_Y" pos="0 0 0" axis="0 1 0"
+                                        damping="0.1" armature='0.01'
+                                        range="-3.1416 3.1416" />
+                                    <geom type="mesh" contype="0" conaffinity="0" group="1"
+                                        density="0" rgba="1 1 1 1" mesh="R_SHOULDER_Y_S" />
+                                    <geom type="mesh" rgba="1 1 1 1" mesh="R_SHOULDER_Y_S" />
+                                    <body name="R_ELBOW_Y_S" pos="0.0294 -0.1177 0">
+                                        <inertial pos="-0.028121 -0.063324 0.000539"
+                                            quat="0.54545 0.478475 -0.543549 0.422019"
+                                            mass="0.434281"
+                                            diaginertia="0.000453206 0.000409157 0.00025927" />
+                                        <joint name="R_ELBOW_Y" pos="0 0 0" axis="1 0 0"
+                                            damping="0.1" armature='0.01'
+                                            range="0 2.007" />
+                                        <geom type="mesh" contype="0" conaffinity="0" group="1"
+                                            density="0" rgba="0.890196 0.890196 0.913725 1"
+                                            mesh="R_ELBOW_Y_S" />
+                                        <geom type="mesh" rgba="0.890196 0.890196 0.913725 1"
+                                            mesh="R_ELBOW_Y_S" />
+                                        <body name="R_WRIST_P_S" pos="-0.0294 -0.1033 0">
+                                            <inertial pos="4e-06 -0.05988 0.020736"
+                                                quat="0.783268 0.621682 -0.000869096 0.00145396"
+                                                mass="0.532564"
+                                                diaginertia="0.0013348 0.00128278 0.000271882" />
+                                            <joint name="R_WRIST_P" pos="0 0 0" axis="0 -1 0"
+                                                damping="0.1" armature='0.01'
+                                                range="-3.1416 3.1416" />
+                                            <geom type="mesh" contype="0" conaffinity="0" group="1"
+                                                density="0" rgba="1 1 1 1" mesh="R_WRIST_P_S" />
+                                            <geom type="mesh" rgba="1 1 1 1" mesh="R_WRIST_P_S" />
+                                            <body name="R_WRIST_Y_S" pos="0 -0.1457 0.02775">
+                                                <inertial pos="1.4e-05 0 -0.02308"
+                                                    quat="0.566703 0.422903 0.422903 0.566703"
+                                                    mass="0.246086"
+                                                    diaginertia="0.000109592 9.05162e-05 6.63735e-05" />
+                                                <joint name="R_WRIST_Y" pos="0 0 0" axis="0 0 -1"
+                                                    damping="0.1" armature='0.01'
+                                                    range="-1.3963 1.3963"
+                                                />
+                                                <geom type="mesh" contype="0" conaffinity="0"
+                                                    group="1" density="0"
+                                                    rgba="0.792157 0.819608 0.933333 1"
+                                                    mesh="R_WRIST_Y_S" />
+                                                <geom type="mesh"
+                                                    rgba="0.792157 0.819608 0.933333 1"
+                                                    mesh="R_WRIST_Y_S" />
+                                                <body name="R_WRIST_R_S" pos="0.026 0 -0.02775">
+                                                    <inertial pos="-0.015482 -0.14218 -0.003437"
+                                                        quat="0.572927 0.560445 -0.430876 0.414732"
+                                                        mass="0.535023"
+                                                        diaginertia="0.00167656 0.0013561 0.000438356" />
+                                                    <joint name="R_WRIST_R" pos="0 0 0" axis="1 0 0"
+                                                        damping="0.1" armature='0.01'
+                                                        range="-0.0873 1.5533"
+                                                    />
+                                                    <geom type="mesh" contype="0" conaffinity="0"
+                                                        group="1" density="0"
+                                                        rgba="0.890196 0.890196 0.913725 1"
+                                                        mesh="R_WRIST_R_S" />
+                                                    <geom type="mesh"
+                                                        rgba="0.890196 0.890196 0.913725 1"
+                                                        mesh="R_WRIST_R_S" />
+                                                    <!-- ALOHA -->
+                                                    <!-- 添加夹爪基座 -->
+                                                    <body name="R_gripper_link" pos="-0.03 -0.1 0"
+                                                        euler="1.5708 0 3.14159">
+                                                        <inertial
+                                                            pos="0.0395662 -2.56311e-07 0.00400649"
+                                                            quat="0.62033 0.619916 -0.339682 0.339869"
+                                                            mass="0.251652"
+                                                            diaginertia="0.000689546 0.000650316 0.000468142" />
+                                                        <geom class="visual"
+                                                            mesh="vx300s_7_gripper_prop" />
+                                                        <geom class="collision"
+                                                            mesh="vx300s_7_gripper_prop" />
+                                                        <geom class="visual"
+                                                            mesh="vx300s_7_gripper_bar" />
+                                                        <geom class="collision"
+                                                            mesh="vx300s_7_gripper_bar" />
+                                                        <geom class="visual"
+                                                            pos="0 -0.03525 -0.0227"
+                                                            quat="0 -0.707107 0 -0.707107"
+                                                            type="mesh"
+                                                            mesh="vx300s_7_gripper_wrist_mount" />
+                                                        <geom class="collision"
+                                                            pos="0 -0.03525 -0.0227"
+                                                            quat="0 -0.707107 0 -0.707107"
+                                                            type="mesh"
+                                                            mesh="vx300s_7_gripper_wrist_mount" />
+
+                                                        <!-- 添加相机 -->
+                                                        <geom class="visual"
+                                                            pos="0 -0.0824748 -0.0095955"
+                                                            quat="0 0 -0.21644 -0.976296"
+                                                            type="mesh" mesh="d405_solid" />
+                                                        <geom class="collision"
+                                                            pos="0 -0.0824748 -0.0095955"
+                                                            quat="0 0 -0.21644 -0.976296"
+                                                            type="mesh" mesh="d405_solid" />
+                                                        <camera name="wrist_cam_right"
+                                                            pos="0 -0.0824748 -0.0095955"
+                                                            mode="fixed" euler="2.70525955359 0 0"
+                                                            focal="1.93e-3 1.93e-3"
+                                                            resolution="1280 720"
+                                                            sensorsize="3896e-6 2140e-6" />
+                                                        <body name="R_tool_frame"
+                                                            pos="0 0 0" euler="1.5708 0 3.1415" />
+                                                        <!-- 添加左手指 -->
+                                                        <body name="R_left_finger_link"
+                                                            pos="0.0290 -0.0141637 0.0211727"
+                                                            quat="1 -1 -1 1">
+                                                            <inertial
+                                                                pos="0.0143478 -0.0284791 0.0122897"
+                                                                quat="0.535486 0.458766 -0.450407 0.547651"
+                                                                mass="0.0862937"
+                                                                diaginertia="5.86848e-05 4.46887e-05 1.8397e-05" />
+                                                            <joint name="R_left_finger"
+                                                                class="left_finger" />
+                                                            <geom pos="0.0141637 0.0211727 0.06"
+                                                                class="visual" quat="1 1 1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_left" />
+                                                            <geom pos="0.0141637 0.0211727 0.06"
+                                                                class="collision" quat="1 1 1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_left" />
+                                                            <geom name="R_left_g0"
+                                                                pos="0.013  -0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="R_left_g1"
+                                                                pos="0.0222 -0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="R_left_g2"
+                                                                pos="0.0182 -0.0845 0.0266"
+                                                                class="sphere_collision" />
+                                                        </body>
+
+                                                        <!-- 添加右手指 -->
+                                                        <body name="R_right_finger_link"
+                                                            pos="-0.0290 -0.0141637 0.0211727"
+                                                            quat="1 1 1 1">
+                                                            <inertial
+                                                                pos="0.0143711 0.0284792 0.0121421"
+                                                                quat="0.461317 0.537615 -0.545478 0.447894"
+                                                                mass="0.0862932"
+                                                                diaginertia="5.86828e-05 4.46887e-05 1.83949e-05" />
+                                                            <joint name="R_right_finger"
+                                                                class="right_finger" />
+                                                            <geom
+                                                                pos="0.0141637 -0.0211727 0.0597067"
+                                                                class="visual" quat="1 -1 -1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_right" />
+                                                            <geom
+                                                                pos="0.0141637 -0.0211727 0.0597067"
+                                                                class="collision" quat="1 -1 -1 -1"
+                                                                type="mesh"
+                                                                mesh="vx300s_8_custom_finger_right" />
+                                                            <geom name="R_right_g0"
+                                                                pos="0.013  0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="R_right_g1"
+                                                                pos="0.0222 0.0892 0.0268"
+                                                                class="sphere_collision" />
+                                                            <geom name="R_right_g2"
+                                                                pos="0.0182 0.0845 0.0266"
+                                                                class="sphere_collision" />
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+
+    </worldbody>
+
+    <contact>
+        <!-- 原有内容保持不变 -->
+        <exclude body1="L_gripper_link" body2="L_left_finger_link" />
+        <exclude body1="L_gripper_link" body2="L_right_finger_link" />
+        <exclude body1="L_left_finger_link" body2="L_right_finger_link" />
+        <exclude body1="R_gripper_link" body2="R_left_finger_link" />
+        <exclude body1="R_gripper_link" body2="R_right_finger_link" />
+        <exclude body1="R_left_finger_link" body2="R_right_finger_link" />
+    </contact>
+
+    <equality>
+        <joint joint1="L_left_finger" joint2="L_right_finger" polycoef="0 1 0 0 0" />
+        <joint joint1="R_left_finger" joint2="R_right_finger" polycoef="0 1 0 0 0" />
+    </equality>
+    <actuator>
+        <!-- 通用 PD 控制器（位置控制） -->
+        <!-- <position name="LEVEL_Y_ctrl" joint="LEVEL_Y" ctrlrange="0 0.143" kp="1000" kv="100"
+        />
+        <position name="WAIST_R_ctrl" joint="WAIST_R" ctrlrange="-0.3491 0.4363" kp="1000" kv="100"
+        />
+        <position name="WAIST_Y_ctrl" joint="WAIST_Y" ctrlrange="-1.309 1.309" kp="1000" kv="100"
+        />
+        <position name="WAIST_P_ctrl" joint="WAIST_P" ctrlrange="-0.17453 0.17453" kp="1000"
+            kv="100"
+        /> -->
+
+        <!-- 颈部关节 -->
+        <!-- <position name="NECK_Y_ctrl" joint="NECK_Y" ctrlrange="-1.5708 1.5708" kp="200" kv="10"
+        />
+        <position name="NECK_P_ctrl" joint="NECK_P" ctrlrange="-0.6981 0.5236" kp="200" kv="10"
+        />
+        <position name="NECK_R_ctrl" joint="NECK_R" ctrlrange="-0.2618 0.2618" kp="200" kv="10"
+        /> -->
+
+        <!-- 左臂关节 -->
+        <position name="L_SHOULDER_P_ctrl" joint="L_SHOULDER_P" ctrlrange="-3.1416 3.1416" kp="5000"
+            kv="100" />
+        <position name="L_SHOULDER_R_ctrl" joint="L_SHOULDER_R" ctrlrange="-1.396 0.5236" kp="200"
+            kv="10" />
+        <position name="L_SHOULDER_Y_ctrl" joint="L_SHOULDER_Y" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="L_ELBOW_Y_ctrl" joint="L_ELBOW_Y" ctrlrange="0 2.0071" kp="200" kv="10"
+        />
+        <position name="L_WRIST_P_ctrl" joint="L_WRIST_P" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="L_WRIST_Y_ctrl" joint="L_WRIST_Y" ctrlrange="-1.3963 1.3963" kp="200"
+            kv="10" />
+        <position name="L_WRIST_R_ctrl" joint="L_WRIST_R" ctrlrange="-1.5533 0.0873" kp="200"
+            kv="10" />
+
+        <!-- 右臂关节 -->
+        <position name="R_SHOULDER_P_ctrl" joint="R_SHOULDER_P" ctrlrange="-3.1416 3.1416" kp="5000"
+            kv="100" />
+        <position name="R_SHOULDER_R_ctrl" joint="R_SHOULDER_R" ctrlrange="-0.5236 1.396" kp="200"
+            kv="10" />
+        <position name="R_SHOULDER_Y_ctrl" joint="R_SHOULDER_Y" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="R_ELBOW_Y_ctrl" joint="R_ELBOW_Y" ctrlrange="0 2.007" kp="200" kv="10"
+        />
+        <position name="R_WRIST_P_ctrl" joint="R_WRIST_P" ctrlrange="-3.1416 3.1416" kp="200"
+            kv="10" />
+        <position name="R_WRIST_Y_ctrl" joint="R_WRIST_Y" ctrlrange="-1.3963 1.3963" kp="200"
+            kv="10" />
+        <position name="R_WRIST_R_ctrl" joint="R_WRIST_R" ctrlrange="-0.0873 1.5533" kp="200"
+            kv="10" />
+
+        <!-- 左夹爪控制器 -->
+        <position name="L_finger_ctrl" joint="L_left_finger" ctrlrange="0.00 0.037" kp="2000"
+            kv="124" />
+        <!-- <position name="L_right_finger_ctrl" joint="L_right_finger" ctrlrange="0.00 0.037"
+            kp="2000" kv="124" /> -->
+
+        <!-- 右夹爪控制器 -->
+        <position name="R_finger_ctrl" joint="R_left_finger" ctrlrange="0.00 0.037" kp="2000"
+            kv="124" />
+        <!-- <position name="R_right_finger_ctrl" joint="R_right_finger" ctrlrange="0.00 0.037"
+            kp="2000" kv="124" /> -->
+    </actuator>
+
+</mujoco>
